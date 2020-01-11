@@ -6,10 +6,8 @@ import (
 	"github.com/wesgraham/pokerHUD/pkg/types"
 )
 
-
-// TODO: Speedup by querying directly?
 func getVPiP(data []byte) (int, error){
-	var entryArray []types.HandEntry
+	var entryArray []types.Hand
 	err := json.Unmarshal(data, &entryArray)
 	if err != nil {
 		return -1, fmt.Errorf("error unmarshalling data: %s", err)
@@ -28,7 +26,7 @@ func getVPiP(data []byte) (int, error){
 
 
 func getPFR(data []byte) (int, error) {
-	var entryArray []types.HandEntry
+	var entryArray []types.Hand
 	err := json.Unmarshal(data, &entryArray)
 	if err != nil {
 		return -1, fmt.Errorf("error unmarshalling data: %s", err)
@@ -46,7 +44,7 @@ func getPFR(data []byte) (int, error) {
 }
 
 func getAvgRaise(data []byte) (int, error) {
-	var entryArray []types.HandEntry
+	var entryArray []types.Hand
 	err := json.Unmarshal(data, &entryArray)
 	if err != nil {
 		return -1, fmt.Errorf("error unmarshalling data: %s", err)
