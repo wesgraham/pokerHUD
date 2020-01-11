@@ -6,7 +6,7 @@ import (
 	"github.com/wesgraham/pokerHUD/pkg/types"
 )
 
-func strength(data StateData) (string, error) {
+func getStrength(data StateData) (string, error) {
 
 	var heroEntries []types.HandEntry
 	err := json.Unmarshal(data.heroData, &heroEntries)

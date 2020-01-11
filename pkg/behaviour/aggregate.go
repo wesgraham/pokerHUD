@@ -1,22 +1,25 @@
 package behaviour
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/wesgraham/pokerHUD/pkg/store"
+)
 
-func aggregate(state State) (StateData, error) {
+func aggregateStateData(state State) (StateData, error) {
 	heroQuery := "http://localhost:3000/hands?username=" + state.hero
-	heroData, err := utils.QueryHandler(heroQuery)
+	heroData, err := store.Get(heroQuery)
 	if err != nil {
 		return StateData{}, fmt.Errorf("error retrieving query data: %s", err)
 	}
 
 	villainQuery := "http://localhost:3000/hands?username=" + state.villain
-	villainData, err := utils.QueryHandler(villainQuery)
+	villainData, err := store.Get(villainQuery)
 	if err != nil {
 		return StateData{}, fmt.Errorf("error retrieving query data: %s", err)
 	}
 
 	textureQuery := "http://localhost:3000/hands?username=" + state.hero
-	textureData, err := utils.QueryHandler(textureQuery)
+	textureData, err := store.Get(textureQuery)
 	if err != nil {
 		return StateData{}, fmt.Errorf("error retrieving query data: %s", err)
 	}

@@ -18,11 +18,11 @@ type StateData struct {
 
 func Predict(state State) (string, error) {
 
-	stateData, err := aggregate(state)
+	stateData, err := aggregateStateData(state)
 	if err != nil {
 		return "", fmt.Errorf("error aggregating state: %s", err)
 	}
-	strength, err := strength(stateData)
+	strength, err := getStrength(stateData)
 	if err != nil {
 		return "", fmt.Errorf("error determining strength: %s", err)
 	}

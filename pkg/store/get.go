@@ -1,4 +1,4 @@
-package utils
+package store
 
 import (
 "fmt"
@@ -6,7 +6,7 @@ import (
 "net/http"
 )
 
-func QueryHandler(query string) ([]byte, error){
+func Get(query string) ([]byte, error){
 	response, err := http.Get(query)
 	if err != nil {
 		return nil, fmt.Errorf("error querying database: %s", err)

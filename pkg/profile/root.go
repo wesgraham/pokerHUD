@@ -2,7 +2,7 @@ package profile
 
 import (
 	"fmt"
-	"github.com/wesgraham/pokerHUD/pkg/utils"
+	"github.com/wesgraham/pokerHUD/pkg/store"
 	)
 
 type Profile struct {
@@ -18,8 +18,9 @@ type Stats struct {
 
 func Get(username string) (Profile, error) {
 
+	// TODO: Remove need to hardcode query
 	query := "http://localhost:3000/hands?username=" + username
-	data, err := utils.QueryHandler(query)
+	data, err := store.Get(query)
 	if err != nil {
 		return Profile{}, fmt.Errorf("error retrieving query data: %s", err)
 	}
