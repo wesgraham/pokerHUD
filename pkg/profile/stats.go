@@ -3,7 +3,7 @@ package profile
 import (
 	"encoding/json"
 	"fmt"
-	types ""
+	"github.com/wesgraham/pokerHUD/pkg/types"
 )
 
 
@@ -17,7 +17,7 @@ func getVPiP(data []byte) (int, error){
 
 	voluntaryPuts := 0
 	for i := 0; i < len(entryArray); i++ {
-		if (entryArray[i].action == "call" || entryArray[i].action == "raise") && entryArray[i].board == nil {
+		if (entryArray[i].Action == "call" || entryArray[i].Action == "raise") && entryArray[i].Board == nil {
 			voluntaryPuts += 1
 		}
 	}
@@ -36,7 +36,7 @@ func getPFR(data []byte) (int, error) {
 
 	pfr := 0
 	for i := 0; i < len(entryArray); i++ {
-		if entryArray[i].action == "raise" && entryArray[i].board == nil {
+		if entryArray[i].Action == "raise" && entryArray[i].Board == nil {
 			pfr += 1
 		}
 	}
@@ -55,8 +55,8 @@ func getAvgRaise(data []byte) (int, error) {
 	raiseSum := 0
 	raiseTot := 0
 	for i := 0; i < len(entryArray); i++ {
-		if entryArray[i].action == "raise" {
-			raiseSum += entryArray[i].amount
+		if entryArray[i].Action == "raise" {
+			raiseSum += entryArray[i].Amount
 			raiseTot += 1
 		}
 	}
