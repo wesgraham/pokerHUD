@@ -1,0 +1,10 @@
+2020-01-10 16:00:57.433 PST [73974] FATAL:  database files are incompatible with server
+2020-01-10 16:00:57.433 PST [73974] DETAIL:  The data directory was initialized by PostgreSQL version 11, which is not compatible with this version 12.1.
+2020-01-10 16:01:34.678 PST [74014] LOG:  starting PostgreSQL 12.1 on x86_64-apple-darwin17.7.0, compiled by Apple LLVM version 10.0.0 (clang-1000.11.45.5), 64-bit
+2020-01-10 16:01:34.680 PST [74014] LOG:  could not bind IPv6 address "::1": Address already in use
+2020-01-10 16:01:34.680 PST [74014] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-01-10 16:01:34.680 PST [74014] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2020-01-10 16:01:34.680 PST [74014] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-01-10 16:01:34.680 PST [74014] WARNING:  could not create listen socket for "localhost"
+2020-01-10 16:01:34.680 PST [74014] FATAL:  could not create any TCP/IP sockets
+2020-01-10 16:01:34.681 PST [74014] LOG:  database system is shut down
