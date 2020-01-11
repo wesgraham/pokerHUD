@@ -6,21 +6,22 @@ import (
 	"github.com/wesgraham/pokerHUD/pkg/types"
 )
 
+// TODO: Iron out when things are posted to DB
 func getStrength(data StateData) (string, error) {
 
-	var heroEntries []types.HandEntry
+	var heroEntries []types.Hand
 	err := json.Unmarshal(data.heroData, &heroEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)
 	}
 
-	var villainEntries []types.HandEntry
+	var villainEntries []types.Hand
 	err = json.Unmarshal(data.villainData, &villainEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)
 	}
 
-	var textureEntries []types.HandEntry
+	var textureEntries []types.Hand
 	err = json.Unmarshal(data.villainData, &textureEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)

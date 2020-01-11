@@ -17,7 +17,6 @@ type Stats struct {
 }
 
 func Get(username string) (Profile, error) {
-
 	// TODO: Remove need to hardcode query
 	query := "http://localhost:3000/hands?username=" + username
 	data, err := store.Get(query)
