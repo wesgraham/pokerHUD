@@ -18,15 +18,11 @@ type Stats struct {
 }
 
 func Get(username string) (Profile, error) {
-	query := "http://localhost:3000/hands?username=" + username
-	response, err := http.Get(query)
-	if err != nil {
-		return Profile{}, fmt.Errorf("error querying database: %s", err)
-	}
 
-	data, err := ioutil.ReadAll(response.Body)
+	query := "http://localhost:3000/hands?username=" + username
+	data, err := utils.QueryHandler(query)
 	if err != nil {
-		return Profile{}, fmt.Errorf("error reading response: %s", err)
+		return Profile{}, fmt.Errorf("error retrieving query data: %s", err)
 	}
 
 	stats, err := statsagg(data)
