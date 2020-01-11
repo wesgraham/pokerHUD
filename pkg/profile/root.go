@@ -2,8 +2,7 @@ package profile
 
 import (
 	"fmt"
-	"io/ioutil"
-	"net/http"
+	"github.com/wesgraham/pokerHUD/pkg/utils"
 	)
 
 type Profile struct {
