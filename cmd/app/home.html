@@ -7,66 +7,70 @@
 <body>
     <h1>Welcome to PokerHUD</h1>
     <p>Please enter the names of the players you are playing with below:</p>
-    <form action="/action_page.php">
-        HandID: <input type="text" name="username"><br>
-        PotSize: <input type="text" name="username"><br><br>
+    <form id="form">
+        <label for="handid">HandID:</label>
+        <input type="number" name="handid" id="handid"><br>
+        <label for="potsize">Pot Size:</label>
+        <input type="number" name="potsize" id="potsize"><br><br>
 
-        Username: <input type="text" name="username"><br>
-        Balance: <input type="text" name="lname"><br>
-        Hand: <input type="text" name="lname"><br>
-        Action: <input type="text" name="lname"><br>
-        Amount: <input type="text" name="lname"><br>
-        Board: <input type="text" name="lname"><br>
-        ThreeBet: <input type="text" name="lname"><br>
-        FourPlusBet: <input type="text" name="lname"><br><br>
+        <label for="uname">Username:</label>
+        <input type="text" name="uname" id="uname"><br>
+        <label for="balance">Balance:</label>
+        <input type="number" name="balance" id="balance"><br>
+        <label for="hand">Hand:</label>
+        <input type="text" name="hand" id="hand"><br>
+        <label for="action">Action:</label>
+        <input type="text" name="action" id="action"><br>
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" id="amount"><br>
+        <label for="board">Board:</label>
+        <input type="text" name="board" id="board"><br>
+        <label for="threebet">ThreeBet:</label>
+        <input type="checkbox" name="threebet" id="threebet"><br>
+        <label for="fourplusbet">Four Plus Bet:</label>
+        <input type="checkbox" name="fourplusbet" id="fourplusbet"><br><br>
 
-        Username: <input type="text" name="username"><br>
-        Balance: <input type="text" name="lname"><br>
-        Hand: <input type="text" name="lname"><br>
-        Action: <input type="text" name="lname"><br>
-        Amount: <input type="text" name="lname"><br>
-        Board: <input type="text" name="lname"><br>
-        ThreeBet: <input type="text" name="lname"><br>
-        FourPlusBet: <input type="text" name="lname"><br><br>
-
-        Username: <input type="text" name="username"><br>
-        Balance: <input type="text" name="lname"><br>
-        Hand: <input type="text" name="lname"><br>
-        Action: <input type="text" name="lname"><br>
-        Amount: <input type="text" name="lname"><br>
-        Board: <input type="text" name="lname"><br>
-        ThreeBet: <input type="text" name="lname"><br>
-        FourPlusBet: <input type="text" name="lname"><br><br>
-
-        Username: <input type="text" name="username"><br>
-        Balance: <input type="text" name="lname"><br>
-        Hand: <input type="text" name="lname"><br>
-        Action: <input type="text" name="lname"><br>
-        Amount: <input type="text" name="lname"><br>
-        Board: <input type="text" name="lname"><br>
-        ThreeBet: <input type="text" name="lname"><br>
-        FourPlusBet: <input type="text" name="lname"><br><br>
-
-        Username: <input type="text" name="username"><br>
-        Balance: <input type="text" name="lname"><br>
-        Hand: <input type="text" name="lname"><br>
-        Action: <input type="text" name="lname"><br>
-        Amount: <input type="text" name="lname"><br>
-        Board: <input type="text" name="lname"><br>
-        ThreeBet: <input type="text" name="lname"><br>
-        FourPlusBet: <input type="text" name="lname"><br><br>
-
-        Username: <input type="text" name="username"><br>
-        Balance: <input type="text" name="lname"><br>
-        Hand: <input type="text" name="lname"><br>
-        Action: <input type="text" name="lname"><br>
-        Amount: <input type="text" name="lname"><br>
-        Board: <input type="text" name="lname"><br>
-        ThreeBet: <input type="text" name="lname"><br>
-        FourPlusBet: <input type="text" name="lname"><br><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" onclick="sendJSON()">
     </form>
     <br><br>
+
+    <script>
+        function sendJSON(){
+
+            let uname = document.querySelector('#uname');
+            let handid = document.querySelector('#handid');
+            let balance = document.querySelector('#balance');
+            let hand = document.querySelector('#hand');
+            let potsize = document.querySelector('#potsize');
+            let action = document.querySelector('#action');
+            let amount = document.querySelector('#amount');
+            let board = document.querySelector('#board');
+            let threebet = document.querySelector('#threebet');
+            let fourplusbet = document.querySelector('#fourplusbet');
+
+            // Creating a XHR object
+            let xhr = new XMLHttpRequest();
+            let url = "localhost:8080/hands";
+
+            // open a connection
+            xhr.open("POST", url, true);
+
+            // Set the request header i.e. which type of content you are sending
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+
+            // Converting JSON data to string
+            var data = JSON.stringify({ "uname": uname.value, "handid": handid.value,
+                                        "balance": balance.value, "hand": hand.value,
+                                        "potsize": potsize.value, "action": action.value,
+                                        "amount": amount.value, "board": board.value,
+                                        "threebet": threebet.value, "fourplusbet": fourplusbet.value
+                                        });
+            // Sending data with the request
+            xhr.send(data);
+        }
+
+    </script>
 
 </body>
 </html>
