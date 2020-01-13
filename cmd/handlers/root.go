@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func Root(w http.ResponseWriter, r *http.Request) {
 	// Load file of homepage with basic HTML
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")

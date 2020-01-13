@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func profilesHandler(w http.ResponseWriter, r *http.Request) {
+func Profiles(w http.ResponseWriter, r *http.Request) {
 	// Load file of homepage with basic HTML
 	pwd, _ := os.Getwd()
 	dat, err := ioutil.ReadFile(pwd + "/app/profile.html")
@@ -18,7 +18,7 @@ func profilesHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(dat))
 }
 
-func profileHandler(w http.ResponseWriter, r *http.Request) {
+func Profile(w http.ResponseWriter, r *http.Request) {
 	query := "http://localhost:3000/hands"
 	data, err := store.Get(query)
 

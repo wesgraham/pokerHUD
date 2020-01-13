@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func statsHandler(w http.ResponseWriter, r *http.Request) {
+func Stats(w http.ResponseWriter, r *http.Request) {
 	// Load file of homepage with basic HTML
 	pwd, _ := os.Getwd()
 	dat, err := ioutil.ReadFile(pwd + "/app/stats.html")
@@ -18,7 +18,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(dat))
 }
 
-func statHandler(w http.ResponseWriter, r *http.Request) {
+func Stat(w http.ResponseWriter, r *http.Request) {
 	data, err := profile.Get("wg")
 
 	// If there is an error, print it to the console, and return a server

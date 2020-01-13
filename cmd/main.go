@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"github.com/wesgraham/pokerHUD/cmd/handlers"
 )
 
 // TODO: Get rid of localhost everywhere
