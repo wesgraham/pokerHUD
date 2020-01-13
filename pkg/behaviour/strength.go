@@ -33,7 +33,6 @@ func getStrength(data StateData) (string, error) {
 	fmt.Printf("hero entries: %s\n", heroEntries[0].Hand)
 
 	fmt.Printf("Length villain: %d\n", len(villainEntries))
-	fmt.Printf("villain entries: %s\n", villainEntries[0].Hand)
 
 	fmt.Printf("Length texture: %d\n", len(textureEntries))
 	fmt.Printf("texture entries: %s\n", textureEntries[0].Hand)
@@ -84,6 +83,6 @@ func getStrength(data StateData) (string, error) {
 	// TODO: Determine metric for texture agg
 	textureAgg := "TBD"
 
-	ans := "hero is:" + heroAgg + "villain is:" + villainAgg + "texture is:" + textureAgg
+	ans := "hero is:" + heroAgg + "\n" + "villain is:" + villainAgg + "\n" + "texture is:" + textureAgg + "\n"
 	return ans, nil
 }

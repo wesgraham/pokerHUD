@@ -9,14 +9,30 @@ import (
 	"net/http"
 )
 
+// TODO: Get rid of this - figure out why hand.go isnt displaying latest changes
+type FormattedHand struct {
+	Uname       string   `json:"uname"`
+	HandID      int      `json:"handid"`
+	Balance     int      `json:"balance"`
+	Hand        string   `json:"hand"`
+	PotSize     int      `json:"potsize"`
+	Action      string   `json:"action"`
+	Amount      int      `json:"amount"`
+	Board       []string `json:"board"`
+	ThreeBet    bool     `json:"threebet"`
+	FourPlusBet bool     `json:"fourplusbet"`
+}
+
+
 func Post(entry types.Hand) (string, error) {
 
-	requestBody, err := json.Marshal(entry)
-	fmt.Println(requestBody)
-	fmt.Println(string(requestBody))
+	formatted := FormattedHand{entry.Uname, entry.HandID, entry.Balance, entry.Hand, entry.PotSize, entry.Action, entry.Amount, entry.Board, entry.ThreeBet, entry.FourPlusBet}
+
+	requestBody, err := json.Marshal(formatted)
 	if err != nil {
 		return "", fmt.Errorf("error marshalling json: %s", err)
 	}
+	fmt.Println(requestBody)
 
 	req, err := http.NewRequest("POST", "http://localhost:3000/hands", bytes.NewBuffer(requestBody))
 	if err != nil {

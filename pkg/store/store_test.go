@@ -1,7 +1,6 @@
 package store
 
 import (
-	"fmt"
 	"github.com/wesgraham/pokerHUD/pkg/types"
 	"testing"
 )
@@ -34,13 +33,10 @@ func TestGet(t *testing.T) {
 }
 
 func TestPost(t *testing.T) {
-	entry := types.Hand{"tester", 1, 100000, "KJo", 2000, "call", 200, nil, false, false}
-	data, err := Post(entry)
+	entry := types.Hand{"hubertblack", 1, 100000, "KJo", 2000, "call", 200, nil, false, false}
+	_, err := Post(entry)
 	if err != nil {
 		t.Errorf("Post(wgraham): %s", err)
 		return
 	}
-
-	fmt.Printf("data: %s", data)
-
 }
