@@ -7,12 +7,14 @@ import (
 )
 
 func TestGet(t *testing.T) {
-	profile, err := Get("wgraham")
+	profile, err := Get("wg")
 	if err != nil {
 		t.Errorf("Get(wgraham): %s", err)
+		return
 	}
 	if profile.username == "" {
 		t.Errorf("Empty Username")
+		return
 	}
 
 	entry := types.Hand{"wgraham", 1, 100000, "KJo", 2000, "call", 200, nil, false, false }
@@ -21,9 +23,11 @@ func TestGet(t *testing.T) {
 	profile, err = Get("wgraham")
 	if err != nil {
 		t.Errorf("Get(wgraham): %s", err)
+		return
 	}
 	if profile.username == "" {
 		t.Errorf("Empty Username")
+		return
 	}
 
 	if profile.stats.vpip == 0 {

@@ -7,27 +7,38 @@ import (
 )
 
 // TODO: Iron out when things are posted to DB
+// TODO: Array of Entries isn't working
 func getStrength(data StateData) (string, error) {
 
-	var heroEntries []types.Hand
+	heroEntries := make([]types.Hand,0)
 	err := json.Unmarshal(data.heroData, &heroEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)
 	}
 
-	var villainEntries []types.Hand
+	villainEntries := make([]types.Hand,0)
 	err = json.Unmarshal(data.villainData, &villainEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)
 	}
 
-	var textureEntries []types.Hand
+	textureEntries := make([]types.Hand,0)
 	err = json.Unmarshal(data.villainData, &textureEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)
 	}
 
 	var heroAgg string
+	fmt.Printf("Length hero: %d\n", len(heroEntries))
+	fmt.Printf("hero entries: %s\n", heroEntries[0].Hand)
+
+	fmt.Printf("Length villain: %d\n", len(villainEntries))
+	fmt.Printf("villain entries: %s\n", villainEntries[0].Hand)
+
+	fmt.Printf("Length texture: %d\n", len(textureEntries))
+	fmt.Printf("texture entries: %s\n", textureEntries[0].Hand)
+
+
 	numraise, numcall, numfold := 0, 0, 0
 	for i := 0; i < len(heroEntries); i++ {
 		if len(heroEntries[i].Board) == len(textureEntries[len(textureEntries)-1].Board) {

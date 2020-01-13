@@ -1,14 +1,14 @@
 package types
 
 type Hand struct {
-	Uname string
-	HandID int
-	Balance int
-	Hand string
-	PotSize int
-	Action string
-	Amount int
-	Board []string
-	ThreeBet bool
-	FourPlusBet bool
+	Uname string `json:"uname"`
+	HandID int   `json:"handid"`
+	Balance int  `json:"balance"`
+	Hand string  `json:"hand"`
+	PotSize int  `json:"potsize"`
+	Action string  `json:"action"`
+	Amount int   `json:"amount"`
+	Board []string  `json:"board"`
+	ThreeBet bool  `json:"threebet"`
+	FourPlusBet bool  `json:"fourplusbet"`
 }

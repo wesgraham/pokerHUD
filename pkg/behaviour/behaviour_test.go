@@ -9,15 +9,28 @@ import (
 
 func TestPredict(t *testing.T) {
 	entry := types.Hand{"wgraham", 1, 100000, "KJo", 2000, "call", 200, nil, false, false}
-	store.Post(entry)
+	_, err := store.Post(entry)
+	if err != nil {
+		t.Errorf("error posting to db: %s", err)
+	}
+
+	entry = types.Hand{"wgraham", 2, 100000, "KJo", 2000, "call", 200, nil, false, false}
+	_, err = store.Post(entry)
+	if err != nil {
+		t.Errorf("error posting to db: %s", err)
+	}
 
 	entry = types.Hand{"hubertblack", 1, 100000, "KJo", 4000, "raise", 500, nil, true, false}
-	store.Post(entry)
+	_, err = store.Post(entry)
+	if err != nil {
+		t.Errorf("error posting to db: %s", err)
+	}
 
 	state := State{"wgraham", "hubertblack", 2}
 	ans, err := Predict(state)
 	if err != nil {
 		t.Errorf("Error predicting state: %s", err)
+		return
 	}
 	fmt.Printf("Answer: %s", ans)
 }

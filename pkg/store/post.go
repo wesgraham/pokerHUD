@@ -9,24 +9,33 @@ import (
 	"net/http"
 )
 
+
 func Post(entry types.Hand) (string, error){
 
 	requestBody, err := json.Marshal(entry)
+	fmt.Println(requestBody)
+	fmt.Println(string(requestBody))
 	if err != nil {
 		return "", fmt.Errorf("error marshalling json: %s", err)
 	}
 
-	resp, err := http.Post("http://localhost:3000/hands", "application/json", bytes.NewBuffer(requestBody))
+	req, err := http.NewRequest("POST", "http://localhost:3000/hands", bytes.NewBuffer(requestBody))
 	if err != nil {
 		return "", fmt.Errorf("error posting: %s", err)
 	}
+	req.Header.Set("Content-Type", "application/json")
 
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return "", fmt.Errorf("error retreiving response: %s", err)
-	}
+	fmt.Println("response Status:", resp.Status)
+	fmt.Println("response Headers:", resp.Header)
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println("response Body:", string(body))
 
 	return string(body), nil
 }
