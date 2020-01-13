@@ -29,7 +29,6 @@ func TestGet(t *testing.T) {
 		t.Errorf("Empty response")
 		return
 	}
-
 }
 
 func TestPost(t *testing.T) {
