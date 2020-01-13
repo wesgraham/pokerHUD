@@ -8,7 +8,7 @@ import (
 
 // TODO: Get rid of localhost everywhere
 func main() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", ((ha))
 	http.HandleFunc("/getProfile", profileHandler)
 	http.HandleFunc("/profiles", profilesHandler)
 	http.HandleFunc("/getStats", statHandler)
