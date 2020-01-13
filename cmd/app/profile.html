@@ -5,13 +5,46 @@
     <title>Profiles</title>
 </head>
 <body>
-<h1>Welcome to PokerHUD</h1>
-<p>Please enter the names of the profile you seek below:</p>
-<form action="/action_page.php">
-    Username: <input type="text" name="username"><br>
-    <input type="submit" value="Submit">
-</form>
-<br><br>
+    <h1>Welcome to PokerHUD</h1>
 
+    <p>Active Profiles:</p>
+    <p id="showData"></p>
+    <script>
+        var profileTable = document.createElement("table");
+
+        var tr = profileTable.insertRow(-1);
+        var th = document.createElement("th");      // TABLE HEADER.
+        th.innerHTML = "Username";
+        tr.appendChild(th);
+
+        profileArray = [];
+        fetch("/getProfile")
+            .then(response => response.json())
+            .then(profileList => {
+                //Once we fetch the list, we iterate over it
+                profileList.forEach(profile => {
+                    if (profile.uname != null) {
+                        var inside = false;
+                        for (i = 0; i < profileArray.length; i++) {
+                            if (profile.uname === profileArray[i]) {
+                                inside = true;
+                            }
+                        }
+                        if (!inside) {
+                            tr = profileTable.insertRow(-1);
+                            var tabCell = tr.insertCell(-1);
+                            tabCell.innerHTML = profile.uname;
+
+                            console.log(profile.uname);
+                            profileArray.push(profile.uname)
+                        }
+                    }
+                });
+
+                var divContainer = document.getElementById("showData");
+                divContainer.innerHTML = "";
+                divContainer.appendChild(profileTable);
+            })
+    </script>
 </body>
 </html>

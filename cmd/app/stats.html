@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profiles</title>
+</head>
+<body>
+<h1>Welcome to PokerHUD</h1>
+
+<p>WG's Stats:</p>
+<p id="showData"></p>
+<script>
+    var statsTable = document.createElement("table");
+
+    var tr = statsTable.insertRow(-1);
+    var th = document.createElement("th");      // TABLE HEADER.
+    th.innerHTML = "Username";
+    tr.appendChild(th);
+    th = document.createElement("th");      // TABLE HEADER.
+    th.innerHTML = "VPIP";
+    tr.appendChild(th);
+    th = document.createElement("th");      // TABLE HEADER.
+    th.innerHTML = "PFR";
+    tr.appendChild(th);
+
+    fetch("/getStats")
+        .then(response => response.json())
+        .then(statsList => {
+            //Once we fetch the list, we iterate over it
+            statsList.forEach(profile => {
+                if (profile.uname != null) {
+                    var inside = false;
+                    for (i = 0; i < profileArray.length; i++) {
+                        if (profile.uname === profileArray[i]) {
+                            inside = true;
+                        }
+                    }
+                    if (!inside) {
+                        tr = profileTable.insertRow(-1);
+                        var tabCell = tr.insertCell(-1);
+                        tabCell.innerHTML = profile.uname;
+
+                        console.log(profile.uname);
+                        profileArray.push(profile.uname)
+                    }
+                }
+            });
+
+            var divContainer = document.getElementById("showData");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(profileTable);
+        })
+</script>
+</body>
+</html>
