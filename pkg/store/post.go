@@ -23,7 +23,6 @@ type FormattedHand struct {
 	FourPlusBet bool     `json:"fourplusbet"`
 }
 
-
 func Post(entry types.Hand) (string, error) {
 
 	formatted := FormattedHand{entry.Uname, entry.HandID, entry.Balance, entry.Hand, entry.PotSize, entry.Action, entry.Amount, entry.Board, entry.ThreeBet, entry.FourPlusBet}

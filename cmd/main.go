@@ -3,16 +3,13 @@ package main
 import (
 	"log"
 	"net/http"
-	"github.com/wesgraham/pokerHUD/cmd/handlers"
 )
 
-// TODO: Get rid of localhost everywhere
 func main() {
-	http.HandleFunc("/", ((ha))
-	http.HandleFunc("/getProfile", profileHandler)
-	http.HandleFunc("/profiles", profilesHandler)
-	http.HandleFunc("/getStats", statHandler)
-	http.HandleFunc("/stats", statsHandler)
-
+	http.HandleFunc("/", Root)
+	http.HandleFunc("/getProfile", Profile)
+	http.HandleFunc("/profiles", Profiles)
+	http.HandleFunc("/getStats", Stat)
+	http.HandleFunc("/stats", Stats)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

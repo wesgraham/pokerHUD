@@ -7,14 +7,14 @@ import (
 )
 
 type Profile struct {
-	Username string   `json:"uname"`
-	Stats    Stats	  `json:"stats"`
+	Username string `json:"uname"`
+	Stats    Stats  `json:"stats"`
 }
 
 type Stats struct {
-	Vpip         int  `json:"vpip"`
-	Pfr          int  `json:"pfr"`
-	AverageRaise int  `json:"averageRaise"`
+	Vpip         int `json:"vpip"`
+	Pfr          int `json:"pfr"`
+	AverageRaise int `json:"averageRaise"`
 }
 
 func Get(username string) ([]byte, error) {
