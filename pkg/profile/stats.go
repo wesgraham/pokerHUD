@@ -6,7 +6,7 @@ import (
 	"github.com/wesgraham/pokerHUD/pkg/types"
 )
 
-func getVPiP(data []byte) (int, error){
+func getVPiP(data []byte) (int, error) {
 	var entryArray []types.Hand
 	err := json.Unmarshal(data, &entryArray)
 	if err != nil {
@@ -23,7 +23,6 @@ func getVPiP(data []byte) (int, error){
 	vpip := voluntaryPuts / len(entryArray)
 	return vpip, nil
 }
-
 
 func getPFR(data []byte) (int, error) {
 	var entryArray []types.Hand
@@ -59,11 +58,9 @@ func getAvgRaise(data []byte) (int, error) {
 		}
 	}
 
-	avgRaise := raiseSum/raiseTot
+	avgRaise := raiseSum / raiseTot
 	return avgRaise, nil
 }
-
-
 
 func statsagg(data []byte) (Stats, error) {
 	vpip, err := getVPiP(data)

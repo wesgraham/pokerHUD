@@ -5,13 +5,13 @@ import (
 )
 
 type State struct {
-	hero     string
-	villain  string
-	handID   int
+	hero    string
+	villain string
+	handID  int
 }
 
 type StateData struct {
-	heroData []byte
+	heroData    []byte
 	villainData []byte
 	textureData []byte
 }

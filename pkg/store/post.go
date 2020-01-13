@@ -9,8 +9,7 @@ import (
 	"net/http"
 )
 
-
-func Post(entry types.Hand) (string, error){
+func Post(entry types.Hand) (string, error) {
 
 	requestBody, err := json.Marshal(entry)
 	fmt.Println(requestBody)

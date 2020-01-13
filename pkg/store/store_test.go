@@ -13,7 +13,7 @@ func TestGet(t *testing.T) {
 		return
 	}
 
-	entry := types.Hand{"wgraham", 1, 100000, "KJo", 2000, "call", 200, nil, false, false }
+	entry := types.Hand{"wgraham", 1, 100000, "KJo", 2000, "call", 200, nil, false, false}
 	_, err = Post(entry)
 	if err != nil {
 		t.Errorf("Post(wgraham): %s", err)
@@ -34,7 +34,7 @@ func TestGet(t *testing.T) {
 }
 
 func TestPost(t *testing.T) {
-	entry := types.Hand{"tester", 1, 100000, "KJo", 2000, "call", 200, nil, false, false }
+	entry := types.Hand{"tester", 1, 100000, "KJo", 2000, "call", 200, nil, false, false}
 	data, err := Post(entry)
 	if err != nil {
 		t.Errorf("Post(wgraham): %s", err)

@@ -10,19 +10,19 @@ import (
 // TODO: Array of Entries isn't working
 func getStrength(data StateData) (string, error) {
 
-	heroEntries := make([]types.Hand,0)
+	heroEntries := make([]types.Hand, 0)
 	err := json.Unmarshal(data.heroData, &heroEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)
 	}
 
-	villainEntries := make([]types.Hand,0)
+	villainEntries := make([]types.Hand, 0)
 	err = json.Unmarshal(data.villainData, &villainEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)
 	}
 
-	textureEntries := make([]types.Hand,0)
+	textureEntries := make([]types.Hand, 0)
 	err = json.Unmarshal(data.villainData, &textureEntries)
 	if err != nil {
 		return "", fmt.Errorf("error unmarshalling data: %s", err)
@@ -37,7 +37,6 @@ func getStrength(data StateData) (string, error) {
 
 	fmt.Printf("Length texture: %d\n", len(textureEntries))
 	fmt.Printf("texture entries: %s\n", textureEntries[0].Hand)
-
 
 	numraise, numcall, numfold := 0, 0, 0
 	for i := 0; i < len(heroEntries); i++ {

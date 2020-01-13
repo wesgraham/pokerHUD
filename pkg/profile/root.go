@@ -3,11 +3,11 @@ package profile
 import (
 	"fmt"
 	"github.com/wesgraham/pokerHUD/pkg/store"
-	)
+)
 
 type Profile struct {
-	username     string
-	stats		 Stats
+	username string
+	stats    Stats
 }
 
 type Stats struct {

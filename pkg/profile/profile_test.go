@@ -17,7 +17,7 @@ func TestGet(t *testing.T) {
 		return
 	}
 
-	entry := types.Hand{"wgraham", 1, 100000, "KJo", 2000, "call", 200, nil, false, false }
+	entry := types.Hand{"wgraham", 1, 100000, "KJo", 2000, "call", 200, nil, false, false}
 	store.Post(entry)
 
 	profile, err = Get("wgraham")
