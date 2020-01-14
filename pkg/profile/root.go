@@ -13,8 +13,8 @@ type Profile struct {
 }
 
 type Stats struct {
-	Vpip         int `json:"vpip"`
-	Pfr          int `json:"pfr"`
+	Vpip         float32 `json:"vpip"`
+	Pfr          float32 `json:"pfr"`
 	AverageRaise int `json:"averageRaise"`
 }
 

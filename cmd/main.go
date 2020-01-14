@@ -78,20 +78,8 @@ func Stat(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var profileArray []profile.Profile
-	err = json.Unmarshal(data, &profileArray)
-	if err != nil {
-		fmt.Println(fmt.Errorf("Error: %v", err))
-		return
-	}
-
-	for i:=0; i<len(profileArray);i++ {
-		fmt.Println(profileArray[i].Username)
-		fmt.Println(profileArray[i].Stats)
-	}
-
 	// If all goes well, write the JSON list of profiles to the response
-	//w.Write(data)
+	w.Write(data)
 }
 
 func Post(w http.ResponseWriter, r *http.Request) {

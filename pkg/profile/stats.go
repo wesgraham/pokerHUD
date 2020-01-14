@@ -6,7 +6,7 @@ import (
 	"github.com/wesgraham/pokerHUD/pkg/types"
 )
 
-func getVPiP(data []byte) (int, error) {
+func getVPiP(data []byte) (float32, error) {
 	var entryArray []types.Hand
 	err := json.Unmarshal(data, &entryArray)
 	if err != nil {
@@ -15,16 +15,16 @@ func getVPiP(data []byte) (int, error) {
 
 	voluntaryPuts := 0
 	for i := 0; i < len(entryArray); i++ {
-		if (entryArray[i].Action == "call" || entryArray[i].Action == "raise") && entryArray[i].Board == nil {
+		if (entryArray[i].Action == "call" || entryArray[i].Action == "raise") {
 			voluntaryPuts += 1
 		}
 	}
 
-	vpip := voluntaryPuts / max(len(entryArray), 1)
+	vpip := float32(voluntaryPuts) / float32(max(len(entryArray), 1))
 	return vpip, nil
 }
 
-func getPFR(data []byte) (int, error) {
+func getPFR(data []byte) (float32, error) {
 	var entryArray []types.Hand
 	err := json.Unmarshal(data, &entryArray)
 	if err != nil {
@@ -33,12 +33,12 @@ func getPFR(data []byte) (int, error) {
 
 	pfr := 0
 	for i := 0; i < len(entryArray); i++ {
-		if entryArray[i].Action == "raise" && entryArray[i].Board == nil {
+		if entryArray[i].Action == "raise" {
 			pfr += 1
 		}
 	}
 
-	vpip := pfr / max(len(entryArray), 1)
+	vpip := float32(pfr) / float32(max(len(entryArray), 1))
 	return vpip, nil
 }
 

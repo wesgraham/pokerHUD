@@ -6,8 +6,10 @@
 </head>
 <body>
 <h1>Welcome to PokerHUD</h1>
-
-<p>WG's Stats:</p>
+<a href="http://localhost:8080/">Home</a>
+<a href="http://localhost:8080/profiles">Profiles</a>
+<a href="http://localhost:8080/stats">Stats</a>
+<p>Player Stats:</p>
 <p id="showData"></p>
 <script>
     var statsTable = document.createElement("table");
@@ -22,23 +24,27 @@
     th = document.createElement("th");      // TABLE HEADER.
     th.innerHTML = "PFR";
     tr.appendChild(th);
+    th = document.createElement("th");      // TABLE HEADER.
+    th.innerHTML = "Average Raise";
+    tr.appendChild(th);
 
     fetch("/getStats")
         .then(response => response.json())
         .then(statsList => {
             //Once we fetch the list, we iterate over it
             statsList.forEach(profile => {
-                if (profile.uname != null) {
-                    tr = profileTable.insertRow(-1);
+                if (profile.uname !== "") {
+                    tr = statsTable.insertRow(-1);
                     var tabCell = tr.insertCell(-1);
                     tabCell.innerHTML = profile.uname;
                     tabCell = tr.insertCell(-1);
                     tabCell.innerHTML = profile.stats.vpip;
                     tabCell = tr.insertCell(-1);
                     tabCell.innerHTML = profile.stats.pfr;
+                    tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = profile.stats.averageRaise;
 
                     console.log(profile.uname);
-                    profileArray.push(profile.uname)
                 }
             });
 
