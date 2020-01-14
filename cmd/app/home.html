@@ -50,7 +50,7 @@
 
             // Creating a XHR object
             let xhr = new XMLHttpRequest();
-            let url = "localhost:8080/hands";
+            let url = "http://localhost:8080/post";
 
             // open a connection
             xhr.open("POST", url, true);
@@ -60,13 +60,14 @@
             xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
             // Converting JSON data to string
-            var data = JSON.stringify({ "uname": uname.value, "handid": handid.value,
-                                        "balance": balance.value, "hand": hand.value,
-                                        "potsize": potsize.value, "action": action.value,
-                                        "amount": amount.value, "board": board.value,
-                                        "threebet": threebet.value, "fourplusbet": fourplusbet.value
+            var data = JSON.stringify({ "uname": uname.value, "handid": parseInt(handid.value, 10),
+                                        "balance": parseInt(balance.value, 10), "hand": hand.value,
+                                        "potsize": parseInt(potsize.value, 10), "action": action.value,
+                                        "amount": parseInt(amount.value, 10), "board": [board.value],
+                                        "threebet": (threebet.value === 'true'), "fourplusbet": (fourplusbet.value === 'true')
                                         });
             // Sending data with the request
+            console.log(data);
             xhr.send(data);
         }
 

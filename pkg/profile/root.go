@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/wesgraham/pokerHUD/pkg/store"
+	"github.com/wesgraham/pokerHUD/pkg/types"
 )
 
 type Profile struct {
@@ -32,4 +33,50 @@ func Get(username string) ([]byte, error) {
 
 	profileAsBytes, err := json.Marshal(Profile{username, stats})
 	return profileAsBytes, nil
+}
+
+func GetAll() ([]byte, error) {
+	query := "http://localhost:3000/hands"
+	data, err := store.Get(query)
+	if err != nil {
+		return nil, fmt.Errorf("error retrieving query data: %s", err)
+	}
+
+	var hands []types.Hand
+	err = json.Unmarshal(data, &hands)
+	if err != nil {
+		return nil, fmt.Errorf("error unmarshalling data: %s", err)
+	}
+
+	var profileArray []Profile
+	var usernames []string
+	for i := 0; i < len(hands); i++ {
+		if !contains(usernames, hands[i].Uname) {
+			query := "http://localhost:3000/hands?uname=eq." + hands[i].Uname
+			data, err := store.Get(query)
+			if err != nil {
+				return nil, fmt.Errorf("error retrieving query data: %s", err)
+			}
+
+			stats, err := statsagg(data)
+			if err != nil {
+				return nil, fmt.Errorf("error aggregating stats: %s", err)
+			}
+
+			profileArray = append(profileArray, Profile{hands[i].Uname, stats})
+			usernames = append(usernames, hands[i].Uname)
+		}
+	}
+
+	profileArrayAsBytes, err := json.Marshal(profileArray)
+	return profileArrayAsBytes, nil
+}
+
+func contains(arr []string, str string) bool {
+	for _, a := range arr {
+		if a == str {
+			return true
+		}
+	}
+	return false
 }
