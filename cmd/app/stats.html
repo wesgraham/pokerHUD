@@ -25,21 +25,28 @@
 
     fetch("/getStats")
         .then(response => response.json())
-        .then(stats => {
+        .then(statsList => {
             //Once we fetch the list, we iterate over it
+            statsList.forEach(profile => {
+                if (profile.uname != null) {
+                    tr = profileTable.insertRow(-1);
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = profile.uname;
+                    tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = profile.stats.vpip;
+                    tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = profile.stats.pfr;
 
-            tr = statsTable.insertRow(-1);
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML = stats.uname;
-            tabCell = tr.insertCell(-1);
-            tabCell.innerHTML = stats.stats.vpip;
-            tabCell = tr.insertCell(-1);
-            tabCell.innerHTML = stats.stats.pfr;
+                    console.log(profile.uname);
+                    profileArray.push(profile.uname)
+                }
+            });
 
             var divContainer = document.getElementById("showData");
             divContainer.innerHTML = "";
             divContainer.appendChild(statsTable);
         })
 </script>
+
 </body>
 </html>

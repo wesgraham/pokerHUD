@@ -20,7 +20,7 @@ func getVPiP(data []byte) (int, error) {
 		}
 	}
 
-	vpip := voluntaryPuts / len(entryArray)
+	vpip := voluntaryPuts / max(len(entryArray), 1)
 	return vpip, nil
 }
 
@@ -38,7 +38,7 @@ func getPFR(data []byte) (int, error) {
 		}
 	}
 
-	vpip := pfr / len(entryArray)
+	vpip := pfr / max(len(entryArray), 1)
 	return vpip, nil
 }
 
@@ -58,7 +58,7 @@ func getAvgRaise(data []byte) (int, error) {
 		}
 	}
 
-	avgRaise := raiseSum / raiseTot
+	avgRaise := raiseSum / max(raiseTot, 1)
 	return avgRaise, nil
 }
 
@@ -80,4 +80,11 @@ func statsagg(data []byte) (Stats, error) {
 
 	stats := Stats{vpip, pfr, avgraise}
 	return stats, nil
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
