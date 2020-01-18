@@ -69,7 +69,7 @@ func Stats(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(dat))
 }
 
-// Stats handles the /getStats endpoint
+// Stat handles the /getStats endpoint
 func Stat(w http.ResponseWriter, r *http.Request) {
 	data, err := profile.GetAll()
 	fmt.Println(data)

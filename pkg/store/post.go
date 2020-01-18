@@ -9,9 +9,9 @@ import (
 	"net/http"
 )
 
-// TODO: Get rid of this - figure out why hand.go isnt displaying latest changes
 // FormattedHand is a placeholder for types.HandEntry that can be json.marshal'ed
 type FormattedHand struct {
+	// TODO: Get rid of this - figure out why hand.go isnt displaying latest changes
 	Uname       string   `json:"uname"`
 	HandID      int      `json:"handid"`
 	Balance     int      `json:"balance"`

@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// Gets hand data based on specified endpoint
+// Get gets hand data based on specified endpoint
 func Get(query string) ([]byte, error) {
 	response, err := http.Get(query)
 	if err != nil {
