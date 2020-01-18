@@ -1,4 +1,6 @@
 # PokerHUD
+[![Go Report](https://goreportcard.com/badge/github.com/wesgraham/pokerHUD)](https://goreportcard.com/report/github.com/wesgraham/pokerHUD)
+[![license](https://img.shields.io/aur/license/android-studio)](https://github.com/wesgraham/pokerHUD/blob/master/LICENSE)
 
 ## Project Status
 This is meant to be an academic project. There is very little development occuring for this project presently. This is due to hurdles encountered in bot policy on most active poker sites. I will continue to maintain this repository by thoroughly reviewing any open source contributions. I will provide support and guidance for anyone looking to continue development. 
