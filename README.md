@@ -31,9 +31,12 @@ Connection successful
 Please follow the above postgREST installation tutorial to set up authenticator role before running postgrest server.
 
 **Running the Application**
-go run /cmd/main.go
+
+ `go run /cmd/main.go`
 
 You should see: 
 ```
 Listening on port :8080
 ```
+
+The application should then be accessible at: localhost:8080 in your browser of choice.
