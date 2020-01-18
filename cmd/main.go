@@ -114,5 +114,6 @@ func main() {
 	http.HandleFunc("/getStats", Stat)
 	http.HandleFunc("/stats", Stats)
 	http.HandleFunc("/post", Post)
+	fmt.Printf("Listening on port :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
