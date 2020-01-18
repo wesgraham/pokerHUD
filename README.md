@@ -20,9 +20,12 @@ Ensure that all of the above are installed correctly before going any further. N
 `./postgrest pokerhud.conf`
 
 You should see:
-`Listening on port 3000 \n
-Attempting to connect to the database... \n
-Connection successful`
+
+```
+Listening on port 3000
+Attempting to connect to the database...
+Connection successful
+```
 
 *Note:* Default port is set to :5432
 Please follow the above postgREST installation tutorial to set up authenticator role before running postgrest server.
@@ -31,6 +34,7 @@ Please follow the above postgREST installation tutorial to set up authenticator 
 go run /cmd/main.go
 
 You should see: 
-`Connection successful \n
+```
+Connection successful
 Listening on port :8080
-`
+```
