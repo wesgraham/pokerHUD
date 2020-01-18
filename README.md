@@ -6,3 +6,31 @@ PokerHUD is a poker heads up display (HUD). The HUD allows poker players to ente
 
 PokerHUD consists of a Postgres instance, a set of Go functions, and a MVP front end. 
 
+## Getting Started (MacOS)
+
+**Requirements**
+- [golang v1.11+](https://golang.org/)
+- [PostgreSQL 9.4+](https://www.postgresql.org/download/)
+- [PostgREST 6.0.2+] (http://postgrest.org/en/v6.0/tutorials/tut0.html)
+
+Ensure that all of the above are installed correctly before going any further. Note that PostgREST exists as a single binary, which should be present in your working directory.
+
+**Running Postgrest**
+
+`./postgrest pokerhud.conf`
+
+You should see:
+`Listening on port 3000
+Attempting to connect to the database...
+Connection successful`
+
+*Note:* Default port is set to :5432
+Please follow the above postgREST installation tutorial to set up authenticator role before running postgrest server.
+
+**Running the Application**
+go run /cmd/main.go
+
+You should see: 
+`Connection successful
+Listening on port :8080
+`
