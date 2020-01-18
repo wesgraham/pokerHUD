@@ -1,5 +1,5 @@
 # PokerHUD
-[![Go Report](https://goreportcard.com/badge/github.com/FourthState/plasma-mvp-sidechain)](https://goreportcard.com/report/github.com/wesgraham/pokerHUD)
+[![Go Report](https://goreportcard.com/badge/github.com/wesgraham/pokerHUD)](https://goreportcard.com/report/github.com/wesgraham/pokerHUD)
 [![license](https://img.shields.io/aur/license/android-studio)](https://github.com/wesgraham/pokerHUD/blob/master/LICENSE)
 
 ## Project Status
