@@ -1,5 +1,6 @@
 package types
 
+// Represents a hand entry in our database
 type Hand struct {
 	Uname       string   `json:"uname"`
 	HandID      int      `json:"handid"`

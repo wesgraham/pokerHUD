@@ -7,19 +7,22 @@ import (
 	"github.com/wesgraham/pokerHUD/pkg/types"
 )
 
+// Represents a user and their stats
 type Profile struct {
 	Username string `json:"uname"`
 	Stats    Stats  `json:"stats"`
 }
 
+// Represents core hud metrics
 type Stats struct {
 	Vpip         float32 `json:"vpip"`
 	Pfr          float32 `json:"pfr"`
 	AverageRaise int     `json:"averageRaise"`
 }
 
+// Retrieves profile for a specific user
 func Get(username string) ([]byte, error) {
-	// TODO: Remove need to hardcode query
+	//TODO: Remove need to hardcode query
 	query := "http://localhost:3000/hands?uname=eq." + username
 	data, err := store.Get(query)
 	if err != nil {
@@ -35,6 +38,7 @@ func Get(username string) ([]byte, error) {
 	return profileAsBytes, nil
 }
 
+// Retrieves profiles for all users
 func GetAll() ([]byte, error) {
 	query := "http://localhost:3000/hands"
 	data, err := store.Get(query)

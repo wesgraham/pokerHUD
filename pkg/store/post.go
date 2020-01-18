@@ -10,6 +10,7 @@ import (
 )
 
 // TODO: Get rid of this - figure out why hand.go isnt displaying latest changes
+// FormattedHand is a placeholder for types.HandEntry that can be json.marshal'ed
 type FormattedHand struct {
 	Uname       string   `json:"uname"`
 	HandID      int      `json:"handid"`
@@ -23,6 +24,7 @@ type FormattedHand struct {
 	FourPlusBet bool     `json:"fourplusbet"`
 }
 
+// Post posts a hand entry to your database
 func Post(entry types.Hand) (string, error) {
 
 	formatted := FormattedHand{entry.Uname, entry.HandID, entry.Balance, entry.Hand, entry.PotSize, entry.Action, entry.Amount, entry.Board, entry.ThreeBet, entry.FourPlusBet}

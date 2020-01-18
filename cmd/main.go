@@ -18,6 +18,7 @@ func enableCors(w *http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 }
 
+// Root handles the root url endpoint
 func Root(w http.ResponseWriter, r *http.Request) {
 	// Load file of homepage with basic HTML
 	enableCors(&w)
@@ -30,6 +31,7 @@ func Root(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(dat))
 }
 
+// Profiles handles the /profiles endpoint
 func Profiles(w http.ResponseWriter, r *http.Request) {
 	// Load file of homepage with basic HTML
 	pwd, _ := os.Getwd()
@@ -40,6 +42,7 @@ func Profiles(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(dat))
 }
 
+// Profile handles the /getProfile endpoint
 func Profile(w http.ResponseWriter, r *http.Request) {
 	query := "http://localhost:3000/hands"
 	data, err := store.Get(query)
@@ -55,6 +58,7 @@ func Profile(w http.ResponseWriter, r *http.Request) {
 	w.Write(data)
 }
 
+// Stats handles the /stats endpoint
 func Stats(w http.ResponseWriter, r *http.Request) {
 	// Load file of homepage with basic HTML
 	pwd, _ := os.Getwd()
@@ -65,6 +69,7 @@ func Stats(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(dat))
 }
 
+// Stats handles the /getStats endpoint
 func Stat(w http.ResponseWriter, r *http.Request) {
 	data, err := profile.GetAll()
 	fmt.Println(data)
@@ -81,6 +86,7 @@ func Stat(w http.ResponseWriter, r *http.Request) {
 	w.Write(data)
 }
 
+// Post handles the /post endpoint for posting to the db
 func Post(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	body, err := ioutil.ReadAll(r.Body)
