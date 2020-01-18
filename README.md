@@ -1,3 +1,5 @@
+# PokerHUD
+
 ## Project Status
 This is meant to be an academic project. There is very little development occuring for this project presently. This is due to hurdles encountered in bot policy on most active poker sites. I will continue to maintain this repository by thoroughly reviewing any open source contributions. I will provide support and guidance for anyone looking to continue development. 
 
@@ -15,7 +17,14 @@ PokerHUD consists of a Postgres instance, a set of Go functions, and a MVP front
 
 Ensure that all of the above are installed correctly before going any further. Note that PostgREST exists as a single binary, which should be present in your working directory.
 
-**Running Postgrest**
+**Instantiating Table In Postgres**
+```
+CREATE DATABASE pokerHands;
+CREATE SCHEMA player;
+CREATE TABLE player.hands (uname text, handid integer, balance integer, hand text, potsize integer, action text, amount integer, board text[], threebet boolean, fourplusbet boolean);
+```
+
+**Running PostgREST**
 
 `./postgrest pokerhud.conf`
 
@@ -27,7 +36,7 @@ Attempting to connect to the database...
 Connection successful
 ```
 
-*Note:* Default port is set to :5432
+*Note:* Default port is set to :5432, and authenticated user is set to role titled: *authenticator*
 Please follow the above postgREST installation tutorial to set up authenticator role before running postgrest server.
 
 **Running the Application**
@@ -39,4 +48,4 @@ You should see:
 Listening on port :8080
 ```
 
-The application should then be accessible at: localhost:8080 in your browser of choice.
+The application should then be accessible at localhost:8080
