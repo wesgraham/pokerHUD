@@ -15,7 +15,7 @@ type Profile struct {
 type Stats struct {
 	Vpip         float32 `json:"vpip"`
 	Pfr          float32 `json:"pfr"`
-	AverageRaise int `json:"averageRaise"`
+	AverageRaise int     `json:"averageRaise"`
 }
 
 func Get(username string) ([]byte, error) {

@@ -53,4 +53,3 @@ func Post(entry types.Hand) (string, error) {
 
 	return string(body), nil
 }
-

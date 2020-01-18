@@ -66,7 +66,7 @@ func TestGetAll(t *testing.T) {
 		return
 	}
 
-	for i:=0; i<len(profileArray);i++ {
+	for i := 0; i < len(profileArray); i++ {
 		fmt.Println(profileArray[i].Username)
 		fmt.Println(profileArray[i].Stats)
 	}

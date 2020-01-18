@@ -15,7 +15,7 @@ func getVPiP(data []byte) (float32, error) {
 
 	voluntaryPuts := 0
 	for i := 0; i < len(entryArray); i++ {
-		if (entryArray[i].Action == "call" || entryArray[i].Action == "raise") {
+		if entryArray[i].Action == "call" || entryArray[i].Action == "raise" {
 			voluntaryPuts += 1
 		}
 	}
