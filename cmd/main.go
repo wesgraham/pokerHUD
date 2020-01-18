@@ -55,7 +55,6 @@ func Profile(w http.ResponseWriter, r *http.Request) {
 	w.Write(data)
 }
 
-
 func Stats(w http.ResponseWriter, r *http.Request) {
 	// Load file of homepage with basic HTML
 	pwd, _ := os.Getwd()
@@ -105,7 +104,6 @@ func Post(w http.ResponseWriter, r *http.Request) {
 	// If all goes well, write the JSON list of birds to the response
 	fmt.Fprintf(w, resp)
 }
-
 
 func main() {
 	http.HandleFunc("/", Root)
