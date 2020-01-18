@@ -35,6 +35,5 @@ go run /cmd/main.go
 
 You should see: 
 ```
-Connection successful
 Listening on port :8080
 ```
